@@ -1,7 +1,7 @@
 #include "mainwindow.hpp"
 #include "../build/ui_mainwindow.h"
 
-const std::string FILEPATH = "../words.txt";
+const std::string FILEPATH = "../data/words.txt";
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
