@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QThread>
 #include <fstream>
 #include <iostream>
 #include <string>

@@ -33,7 +33,7 @@ void MainWindow::on_InputTextChanged()
     searcher->closedFileStream();
     searcher->openedFileStream();
 
-    if (ui->inputText->text().size() > 2)
+    if (ui->inputText->text().size() > 0)
     {
         const QString pattern = ui->inputText->text();
 
