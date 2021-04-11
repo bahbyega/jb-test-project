@@ -42,8 +42,8 @@ void MainWindow::on_InputTextChanged()
 
 void MainWindow::stopAnySearch()
 {
-    QCoreApplication::processEvents();
     searcher->setSearchStopped(true);
+    QCoreApplication::processEvents();
     ui->outputText->clear();
 }
 
