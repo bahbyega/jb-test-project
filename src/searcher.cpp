@@ -29,7 +29,7 @@ void Searcher::search(const QString &pattern)
     {
         if (line.find(pattern.toStdString()) != std::string::npos)
         {
-            emit foundWord(line + "\n");
+            emit foundWord(line);
             QThread::msleep(3); // smoothes the output
         }
     }
