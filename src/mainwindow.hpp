@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <QString>
+#include <QtConcurrent/QtConcurrentRun>
+#include <iostream>
+
+#include "searcher.hpp"
 
 namespace Ui
 {
@@ -19,9 +23,11 @@ class MainWindow : public QMainWindow
 
   private slots:
     void on_InputTextChanged();
+    void updateResult(const std::string);
 
   private:
     Ui::MainWindow *ui;
+    Searcher *searcher;
 
     void createActions();
 };

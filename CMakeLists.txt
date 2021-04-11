@@ -18,10 +18,12 @@ find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 set(SOURCES 
     src/mainwindow.cpp 
     src/main.cpp
+    src/searcher.cpp
 )
 
 set(MOC_HEADERS
     src/mainwindow.hpp
+    src/searcher.hpp
 )
 
 set(UI src/mainwindow.ui)
