@@ -9,8 +9,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     searcher = new Searcher(FILEPATH);
-    if (!searcher->openedFileStream())
-        std::cout << "File not opened" << std::endl;
 
     createActions();
 }
@@ -30,9 +28,7 @@ void MainWindow::createActions()
 
 void MainWindow::on_InputTextChanged()
 {
-    ui->outputText->clear();
-    searcher->closedFileStream();
-    searcher->openedFileStream();
+    stopAnySearch();
 
     if (ui->inputText->text().size() > 0)
     {
@@ -42,6 +38,13 @@ void MainWindow::on_InputTextChanged()
         qRegisterMetaType<std::string>("std::string");
         QtConcurrent::run(searcher, &Searcher::search, pattern);
     }
+}
+
+void MainWindow::stopAnySearch()
+{
+    QCoreApplication::processEvents();
+    searcher->setSearchStopped(true);
+    ui->outputText->clear();
 }
 
 void MainWindow::updateResult(const std::string word)

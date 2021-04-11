@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QString>
 #include <QtConcurrent/QtConcurrentRun>
-#include <iostream>
 
 #include "searcher.hpp"
 
@@ -30,6 +29,7 @@ class MainWindow : public QMainWindow
     Searcher *searcher;
 
     void createActions();
+    void stopAnySearch();
 };
 
 #endif /* MAIN_WINDOW_HPP */

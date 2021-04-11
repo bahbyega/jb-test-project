@@ -14,11 +14,10 @@ class Searcher : public QObject
 
   public:
     Searcher(const std::string filepath);
-    ~Searcher() override;
 
     void search(const QString &pattern);
     bool openedFileStream();
-    bool closedFileStream();
+    void setSearchStopped(bool stopped);
 
   signals:
     void foundWord(std::string word);
@@ -26,6 +25,8 @@ class Searcher : public QObject
   private:
     std::ifstream fileStream;
     const std::string filepath;
+
+    bool searchStopped;
 };
 
 #endif /* SEARCHER_HPP */

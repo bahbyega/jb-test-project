@@ -4,33 +4,36 @@ Searcher::Searcher(const std::string filepath) : filepath(filepath)
 {
 }
 
-Searcher::~Searcher()
-{
-    fileStream.close();
-}
-
 bool Searcher::openedFileStream()
 {
     fileStream.open(filepath);
     return fileStream.good();
 }
 
-bool Searcher::closedFileStream()
+void Searcher::setSearchStopped(bool _searchStopped)
 {
-    fileStream.close();
-    return !fileStream.good();
+    searchStopped = _searchStopped;
 }
 
 void Searcher::search(const QString &pattern)
 {
-    std::string line;
-
-    while (std::getline(fileStream, line))
+    if (openedFileStream())
     {
-        if (line.find(pattern.toStdString()) != std::string::npos)
+        searchStopped = false;
+        std::string line;
+
+        while (std::getline(fileStream, line))
         {
-            emit foundWord(line);
-            QThread::msleep(3); // smoothes the output
+            if (searchStopped)
+                break;
+
+            if (line.find(pattern.toStdString()) != std::string::npos)
+            {
+                emit foundWord(line);
+                QThread::msleep(3); // smoothes the output
+            }
         }
+
+        fileStream.close();
     }
 }
