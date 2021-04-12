@@ -39,10 +39,10 @@ cmake --build . --config Release
 To execute the application run the following from the build folder:
 ```
 # if build in debug mode
-Debug/JB2021-test-task.exe
+cd Debug && JB2021-test-task.exe
 
 # if build in release mode
-Release/JB2021-test-task.exe
+cd Release && JB2021-test-task.exe
 ```
 ## Troubleshooting
 If *CMake* fails to find *Qt5* on your machine then you need to set the CMAKE_PREFIX_PATH to the Qt installation.
